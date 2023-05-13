@@ -49,6 +49,7 @@ const substaticresourcesRouter = require("./routes/substaticresources.js");
 const staticresourcesRouter = require("./routes/staticresources.js");
 const medicalrecordsRouter = require("./routes/medicalrecords.js");
 const prescriptionRouter = require("./routes/prescription.js");
+const stockrequestRouter = require("./routes/stockrequest.js");
 
 app.use("/patient", patientRouter);
 app.use("/employee", employeeRouter);
@@ -64,3 +65,4 @@ app.use("/staticresources", staticresourcesRouter);
 app.use("/substaticresources", substaticresourcesRouter);
 app.use("/medicalrecords", medicalrecordsRouter);
 app.use("/prescription", prescriptionRouter);
+app.use("/stockrequest", stockrequestRouter);
