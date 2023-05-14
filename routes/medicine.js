@@ -75,4 +75,16 @@ router.route("/findOne/:id").post(async(req,res)=>{
 })
 
 
+router.post("/maxId", async (req, res) => {
+    try {
+      const result = await Medicine.findOne().sort({ medicine_id: -1});
+      const maxId = result ? result.medicine_id : "MED1000";
+      res.json({ maxId });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  });
+  
+
 module.exports = router;

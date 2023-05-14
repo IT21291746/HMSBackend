@@ -26,6 +26,19 @@ router.route("/add").post((req,res)=>{
 
 })
 
+router.post("/maxId", async (req, res) => {
+    try {
+      const result = await CurrentResources.findOne().sort({ csid: -1 });
+      const maxId = result ? result.csid : "CRID_100";
+      res.json({ maxId });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  });
+  
+
+
 router.route("/").get((req,res)=>{
     CurrentResources.find().then((currentresourcess)=>{
         res.json(currentresourcess)

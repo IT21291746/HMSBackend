@@ -60,6 +60,18 @@ router.route("/delete/:id").delete(async(req,res)=>{
 })
 
 
+router.post("/maxId", async (req, res) => {
+    try {
+      const result = await StaticResources.findOne().sort({ srid: -1 });
+      const maxId = result ? result.srid : "SRID_100";
+      res.json({ maxId });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  });
+  
+
 router.route("/findOne/:id").post(async(req,res)=>{
     let userId = req.params.id;
     await StaticResources.findById(userId).then((staticresources)=>{
